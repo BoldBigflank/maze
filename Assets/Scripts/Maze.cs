@@ -68,7 +68,7 @@ public class Maze : MonoBehaviour
 		wallHolder.name = "Maze";
 		allWalls = new List<GameObject>();
 
-		initialPos = new Vector3((-xSize/2) + wallLength / 2, 0.0f, (-ySize/2) + wallLength / 2);
+		initialPos = new Vector3((-xSize/2.0f) + wallLength / 2.0f, 0.0f, (ySize/2.0f) - wallLength / 2.0f);
 		Vector3 myPos = initialPos;
 		GameObject tempWall;
 
@@ -77,9 +77,10 @@ public class Maze : MonoBehaviour
 			for (int i = 0; i < xSize; i++){
 				// Check the cell
 				Cell cell = cells[i,j];
+
 				// North wall
 				if(i == 0){
-					myPos = new Vector3 (initialPos.x + (j * wallLength), 0.0f, initialPos.z+(i*wallLength)-wallLength);
+					myPos = new Vector3 (initialPos.x + (j * wallLength), 0.0f, initialPos.z - (i*wallLength) + wallLength/2);
 					tempWall = Instantiate (wall, myPos, Quaternion.Euler (0.0f, 90.0f, 0.0f)) as GameObject;
 					tempWall.transform.parent = wallHolder.transform;
 					allWalls.Add(tempWall);
@@ -87,7 +88,7 @@ public class Maze : MonoBehaviour
 
 				// West wall
 				if(j == 0){
-					myPos = new Vector3 (initialPos.x + (j * wallLength) - wallLength/2, 0.0f, initialPos.z+(i*wallLength)-wallLength/2);
+					myPos = new Vector3 (initialPos.x + (j * wallLength) - wallLength/2, 0.0f, initialPos.z-(i*wallLength));
 					tempWall = Instantiate (wall, myPos, Quaternion.identity) as GameObject;
 					tempWall.transform.parent = wallHolder.transform;
 					allWalls.Add(tempWall);
@@ -95,7 +96,7 @@ public class Maze : MonoBehaviour
 
 				// East wall
 				if(cell.east){
-					myPos = new Vector3 (initialPos.x + (j * wallLength) + wallLength/2, 0.0f, initialPos.z+(i*wallLength)-wallLength/2);
+					myPos = new Vector3 (initialPos.x + (j * wallLength) + wallLength/2, 0.0f, initialPos.z-(i*wallLength));
 					tempWall = Instantiate (wall, myPos, Quaternion.identity) as GameObject;
 					tempWall.transform.parent = wallHolder.transform;
 					allWalls.Add(tempWall);
@@ -103,7 +104,7 @@ public class Maze : MonoBehaviour
 
 				// South wall
 				if(cell.south){
-					myPos = new Vector3 (initialPos.x + (j * wallLength), 0.0f, initialPos.z+(i*wallLength));
+					myPos = new Vector3 (initialPos.x + (j * wallLength), 0.0f, initialPos.z - (i*wallLength) - wallLength/2);
 					tempWall = Instantiate (wall, myPos, Quaternion.Euler (0.0f, 90.0f, 0.0f)) as GameObject;
 					tempWall.transform.parent = wallHolder.transform;
 					allWalls.Add(tempWall);
