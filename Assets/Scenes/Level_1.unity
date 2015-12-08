@@ -97,7 +97,6 @@ GameObject:
   - 92: {fileID: 255598436}
   - 124: {fileID: 255598435}
   - 81: {fileID: 255598434}
-  - 114: {fileID: 255598433}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -105,21 +104,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &255598433
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 255598432}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 45870e9e6fe544f6395c463dc149400e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  wall: {fileID: 129664, guid: 8e8e8857d428e4d328fcf7a5d867de78, type: 2}
-  wallLength: 1
-  xSize: 20
-  ySize: 20
 --- !u!81 &255598434
 AudioListener:
   m_ObjectHideFlags: 0
@@ -187,6 +171,49 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
+--- !u!1 &1034324737
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1034324739}
+  - 114: {fileID: 1034324738}
+  m_Layer: 0
+  m_Name: Maze
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1034324738
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1034324737}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45870e9e6fe544f6395c463dc149400e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  wall: {fileID: 129664, guid: 8e8e8857d428e4d328fcf7a5d867de78, type: 2}
+  wallLength: 1
+  xSize: 10
+  ySize: 10
+--- !u!4 &1034324739
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1034324737}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1.69312692, y: 0, z: 5.15604162}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 2
 --- !u!1 &1286039611
 GameObject:
   m_ObjectHideFlags: 0

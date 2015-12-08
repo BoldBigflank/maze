@@ -156,8 +156,8 @@ public class Maze : MonoBehaviour
 	}
 
 	void CreateWalls(){
-		wallHolder = new GameObject();
-		wallHolder.name = "Maze";
+//		wallHolder = new GameObject();
+//		wallHolder.name = "Maze";
 		allWalls = new List<GameObject>();
 
 		initialPos = new Vector3((-xSize/2.0f) + wallLength / 2.0f, 0.0f, (ySize/2.0f) - wallLength / 2.0f);
@@ -175,7 +175,7 @@ public class Maze : MonoBehaviour
 				if(j == 0){
 					myPos = new Vector3 (initialPos.x + (i * wallLength), 0.0f, initialPos.z - (j * wallLength) + wallLength/2);
 					tempWall = Instantiate (wall, myPos, Quaternion.Euler (0.0f, 90.0f, 0.0f)) as GameObject;
-					tempWall.transform.parent = wallHolder.transform;
+					tempWall.transform.parent = gameObject.transform;
 					allWalls.Add(tempWall);
 				}
 
@@ -183,7 +183,7 @@ public class Maze : MonoBehaviour
 				if(i == 0){
 					myPos = new Vector3 (initialPos.x + (i * wallLength) - wallLength/2, 0.0f, initialPos.z-(j * wallLength));
 					tempWall = Instantiate (wall, myPos, Quaternion.identity) as GameObject;
-					tempWall.transform.parent = wallHolder.transform;
+					tempWall.transform.parent = gameObject.transform;
 					allWalls.Add(tempWall);
 				}
 
@@ -191,7 +191,7 @@ public class Maze : MonoBehaviour
 				if(cell.east){
 					myPos = new Vector3 (initialPos.x + (i * wallLength) + wallLength/2, 0.0f, initialPos.z-( j * wallLength));
 					tempWall = Instantiate (wall, myPos, Quaternion.identity) as GameObject;
-					tempWall.transform.parent = wallHolder.transform;
+					tempWall.transform.parent = gameObject.transform;
 					allWalls.Add(tempWall);
 				}
 
@@ -199,7 +199,7 @@ public class Maze : MonoBehaviour
 				if(cell.south){
 					myPos = new Vector3 (initialPos.x + (i * wallLength), 0.0f, initialPos.z - ( j * wallLength) - wallLength/2);
 					tempWall = Instantiate (wall, myPos, Quaternion.Euler (0.0f, 90.0f, 0.0f)) as GameObject;
-					tempWall.transform.parent = wallHolder.transform;
+					tempWall.transform.parent = gameObject.transform;
 					allWalls.Add(tempWall);
 				}
 			}
