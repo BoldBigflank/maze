@@ -52,6 +52,7 @@ public class Maze : MonoBehaviour
 	}
 
 	public GameObject wall;
+	public GameObject floor;
 	public float wallLength = 1.0F;
 	public int xSize = 10;
 	public int ySize = 10;
@@ -156,11 +157,15 @@ public class Maze : MonoBehaviour
 	}
 
 	void CreateWalls(){
-//		wallHolder = new GameObject();
+		GameObject floorObject = Instantiate (floor, initialPos, Quaternion.identity) as GameObject;
+		floorObject.transform.localScale = (Mathf.Max (xSize, ySize) * wallLength / 10.0f) * Vector3.one;
+		floorObject.transform.parent = gameObject.transform;
+
+		//		wallHolder = new GameObject();
 //		wallHolder.name = "Maze";
 		allWalls = new List<GameObject>();
 
-		initialPos = new Vector3((-xSize/2.0f) + wallLength / 2.0f, 0.0f, (ySize/2.0f) - wallLength / 2.0f);
+		initialPos = new Vector3(wallLength * (-xSize/2.0f) + wallLength / 2.0f, 0.0f, wallLength*(ySize/2.0f) - wallLength / 2.0f);
 		Vector3 myPos = initialPos;
 		GameObject tempWall;
 
@@ -173,32 +178,36 @@ public class Maze : MonoBehaviour
 
 				// North wall
 				if(j == 0){
-					myPos = new Vector3 (initialPos.x + (i * wallLength), 0.0f, initialPos.z - (j * wallLength) + wallLength/2);
+					myPos = new Vector3 (initialPos.x + (i * wallLength), wallLength/2.0f, initialPos.z - (j * wallLength) + wallLength/2);
 					tempWall = Instantiate (wall, myPos, Quaternion.Euler (0.0f, 90.0f, 0.0f)) as GameObject;
+					tempWall.transform.localScale *= wallLength;
 					tempWall.transform.parent = gameObject.transform;
 					allWalls.Add(tempWall);
 				}
 
 				// West wall
 				if(i == 0){
-					myPos = new Vector3 (initialPos.x + (i * wallLength) - wallLength/2, 0.0f, initialPos.z-(j * wallLength));
+					myPos = new Vector3 (initialPos.x + (i * wallLength) - wallLength/2, wallLength/2.0f, initialPos.z-(j * wallLength));
 					tempWall = Instantiate (wall, myPos, Quaternion.identity) as GameObject;
+					tempWall.transform.localScale *= wallLength;
 					tempWall.transform.parent = gameObject.transform;
 					allWalls.Add(tempWall);
 				}
 
 				// East wall
 				if(cell.east){
-					myPos = new Vector3 (initialPos.x + (i * wallLength) + wallLength/2, 0.0f, initialPos.z-( j * wallLength));
+					myPos = new Vector3 (initialPos.x + (i * wallLength) + wallLength/2, wallLength/2.0f, initialPos.z-( j * wallLength));
 					tempWall = Instantiate (wall, myPos, Quaternion.identity) as GameObject;
+					tempWall.transform.localScale *= wallLength;
 					tempWall.transform.parent = gameObject.transform;
 					allWalls.Add(tempWall);
 				}
 
 				// South wall
 				if(cell.south){
-					myPos = new Vector3 (initialPos.x + (i * wallLength), 0.0f, initialPos.z - ( j * wallLength) - wallLength/2);
+					myPos = new Vector3 (initialPos.x + (i * wallLength), wallLength/2.0f, initialPos.z - ( j * wallLength) - wallLength/2);
 					tempWall = Instantiate (wall, myPos, Quaternion.Euler (0.0f, 90.0f, 0.0f)) as GameObject;
+					tempWall.transform.localScale *= wallLength;
 					tempWall.transform.parent = gameObject.transform;
 					allWalls.Add(tempWall);
 				}
