@@ -15,7 +15,6 @@ public class TouchMove : MonoBehaviour {
     }
 
     void onGui(){
-    	GUI.Label(new Rect(10, 10, 100, 100), "Hello");
-
+    	
     }
 }
